@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Boat Configurator</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+.boat-configurator {
+  max-width: 700px;
+  margin: auto;
+}
+
+.image-stack {
+  position: relative;
+  width: 100%;
+}
+
+.image-stack img {
+  width: 100%;
+  display: block;
+}
+
+.layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.controls {
+  margin-top: 15px;
+  display: grid;
+  gap: 10px;
+}
+
+label {
+  font-weight: bold;
+}
+
+.price {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-top: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="boat-configurator">
+  <div class="image-stack">
+    <img id="baseBoat" src="https://irp.cdn-website.com/BASE-BOAT.png">
+
+    <img id="deck" class="layer">
+    <img id="hull" class="layer">
+    <img id="deckStripe" class="layer">
+    <img id="hullStripe" class="layer">
+    <img id="deckWing" class="layer">
+    <img id="hullWing" class="layer">
+  </div>
+
+  <div class="controls">
+
+    <label>Deck:</label>
+    <select onchange="setLayer('deck', this.value)">
+      <option value="">None</option>
+      <option value="https://irp.cdn-website.com/deck-red.png">Red</option>
+      <option value="https://irp.cdn-website.com/deck-blue.png">Blue</option>
+    </select>
+
+    <label>Hull:</label>
+    <select onchange="setLayer('hull', this.value)">
+      <option value="">None</option>
+      <option value="https://irp.cdn-website.com/hull-white.png">White</option>
+      <option value="https://irp.cdn-website.com/hull-black.png">Black</option>
+    </select>
+
+    <label>Deck Stripe:</label>
+    <select onchange="setLayer('deckStripe', this.value)">
+      <option value="">None</option>
+      <option value="https://irp.cdn-website.com/deck-stripe-red.png">Red</option>
+      <option value="https://irp.cdn-website.com/deck-stripe-blue.png">Blue</option>
+    </select>
+
+    <label>Hull Stripe:</label>
+    <select onchange="setLayer('hullStripe', this.value)">
+      <option value="">None</option>
+      <option value="https://irp.cdn-website.com/hull-stripe-red.png">Red</option>
+      <option value="https://irp.cdn-website.com/hull-stripe-blue.png">Blue</option>
+    </select>
+
+    <label>Deck Wing:</label>
+    <select onchange="setLayer('deckWing', this.value)">
+      <option value="">None</option>
+      <option value="https://irp.cdn-website.com/deck-wing.png">On</option>
+    </select>
+
+    <label>Hull Wing:</label>
+    <select onchange="setLayer('hullWing', this.value)">
+      <option value="">None</option>
+      <option value="https://irp.cdn-website.com/hull-wing.png">On</option>
+    </select>
+
+    <label>Consoles:</label>
+    <select onchange="setConsole(this.value)">
+      <option value="single">Single Console</option>
+      <option value="dual">Dual Console (+$3,500)</option>
+    </select>
+
+    <div class="price">
+      Total Price: $<span id="price">45,000</span>
+    </div>
+
+  </div>
+</div>
+
+<script>
+let basePrice = 45000;
+let consolePrice = 0;
+
+function setLayer(layerId, imageUrl) {
+  const layer = document.getElementById(layerId);
+  if (!imageUrl) {
+    layer.src = "";
+  } else {
+    layer.src = imageUrl;
+  }
+}
+
+function setConsole(type) {
+  consolePrice = (type === "dual") ? 3500 : 0;
+  updatePrice();
+}
+
+function updatePrice() {
+  const total = basePrice + consolePrice;
+  document.getElementById("price").innerText = total.toLocaleString();
+}
+</script>
+
+</body>
+</html>

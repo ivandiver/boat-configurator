@@ -20,13 +20,18 @@ body {
 
 /* IMAGE SIDE */
 .image-stack {
-  position: relative;
   width: 55%;
   display: flex;
-  align-items: center; /* vertically center boat */
+  justify-content: center;  /* horizontal center */
+  align-items: center;      /* vertical center */
 }
 
-.image-stack img {
+.stack-inner {
+  position: relative;
+  width: 100%;
+}
+
+.stack-inner img {
   width: 100%;
   display: block;
 }
@@ -95,6 +100,7 @@ button {
 
   <!-- IMAGE STACK -->
   <div class="image-stack">
+  <div class="stack-inner">
     <img id="baseBoat" src="https://irp.cdn-website.com/67b72195/dms3rep/multi/build-2.png">
 
     <img id="deck" class="layer">
@@ -104,7 +110,7 @@ button {
     <img id="deckWing" class="layer">
     <img id="hullWing" class="layer">
   </div>
-
+    
   <!-- CONTROLS -->
   <div class="controls">
 

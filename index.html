@@ -12,13 +12,16 @@ body {
 }
 
 .boat-configurator {
-  max-width: 700px;
+  display: flex;
+  gap: 30px;
+  max-width: 1000px;
   margin: auto;
 }
 
+/* IMAGE SIDE */
 .image-stack {
   position: relative;
-  width: 100%;
+  width: 55%;
 }
 
 .image-stack img {
@@ -33,20 +36,53 @@ body {
   pointer-events: none;
 }
 
+/* CONTROL SIDE */
 .controls {
-  margin-top: 15px;
+  width: 45%;
   display: grid;
-  gap: 10px;
+  gap: 12px;
 }
 
 label {
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Color swatch */
+.swatch {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  display: inline-block;
+}
+
+/* Borderless dropdown */
+select {
+  padding: 6px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  background: transparent;
+  font-size: 14px;
+}
+
+select:focus {
+  outline: none;
+  border-bottom: 2px solid #000;
 }
 
 .price {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: bold;
   margin-top: 15px;
+}
+
+button {
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
 }
 </style>
 </head>
@@ -54,8 +90,10 @@ label {
 <body>
 
 <div class="boat-configurator">
+
+  <!-- IMAGE STACK -->
   <div class="image-stack">
-    <img id="baseBoat" src="https://irp.cdn-website.com/67b72195/dms3rep/multi/build-2.png">
+    <img id="baseBoat" src="https://irp.cdn-website.com/BASE-BOAT.png">
 
     <img id="deck" class="layer">
     <img id="hull" class="layer">
@@ -65,49 +103,50 @@ label {
     <img id="hullWing" class="layer">
   </div>
 
+  <!-- CONTROLS -->
   <div class="controls">
 
-    <label>Deck:</label>
-    <select onchange="setLayer('deck', this.value)">
+    <label>Deck <span id="deckSwatch" class="swatch"></span></label>
+    <select onchange="setLayer('deck', this)">
       <option value="">None</option>
-      <option value="https://irp.cdn-website.com/67b72195/dms3rep/multi/154067026575712-1.png">Red</option>
-      <option value="https://irp.cdn-website.com/deck-blue.png">Blue</option>
+      <option value="https://irp.cdn-website.com/deck-red.png" data-color="#c0392b">Red</option>
+      <option value="https://irp.cdn-website.com/deck-blue.png" data-color="#2980b9">Blue</option>
     </select>
 
-    <label>Hull:</label>
-    <select onchange="setLayer('hull', this.value)">
+    <label>Hull <span id="hullSwatch" class="swatch"></span></label>
+    <select onchange="setLayer('hull', this)">
       <option value="">None</option>
-      <option value="https://irp.cdn-website.com/hull-white.png">White</option>
-      <option value="https://irp.cdn-website.com/hull-black.png">Black</option>
+      <option value="https://irp.cdn-website.com/hull-white.png" data-color="#ecf0f1">White</option>
+      <option value="https://irp.cdn-website.com/hull-black.png" data-color="#2c3e50">Black</option>
     </select>
 
-    <label>Deck Stripe:</label>
-    <select onchange="setLayer('deckStripe', this.value)">
+    <label>Deck Stripe <span id="deckStripeSwatch" class="swatch"></span></label>
+    <select onchange="setLayer('deckStripe', this)">
       <option value="">None</option>
-      <option value="https://irp.cdn-website.com/deck-stripe-red.png">Red</option>
-      <option value="https://irp.cdn-website.com/deck-stripe-blue.png">Blue</option>
+      <option value="https://irp.cdn-website.com/deck-stripe-red.png" data-color="#c0392b">Red</option>
+      <option value="https://irp.cdn-website.com/deck-stripe-blue.png" data-color="#2980b9">Blue</option>
     </select>
 
-    <label>Hull Stripe:</label>
-    <select onchange="setLayer('hullStripe', this.value)">
+    <label>Hull Stripe <span id="hullStripeSwatch" class="swatch"></span></label>
+    <select onchange="setLayer('hullStripe', this)">
       <option value="">None</option>
-      <option value="https://irp.cdn-website.com/hull-stripe-red.png">Red</option>
-      <option value="https://irp.cdn-website.com/hull-stripe-blue.png">Blue</option>
+      <option value="https://irp.cdn-website.com/hull-stripe-red.png" data-color="#c0392b">Red</option>
+      <option value="https://irp.cdn-website.com/hull-stripe-blue.png" data-color="#2980b9">Blue</option>
     </select>
 
-    <label>Deck Wing:</label>
-    <select onchange="setLayer('deckWing', this.value)">
+    <label>Deck Wing</label>
+    <select onchange="setLayer('deckWing', this)">
       <option value="">None</option>
       <option value="https://irp.cdn-website.com/deck-wing.png">On</option>
     </select>
 
-    <label>Hull Wing:</label>
-    <select onchange="setLayer('hullWing', this.value)">
+    <label>Hull Wing</label>
+    <select onchange="setLayer('hullWing', this)">
       <option value="">None</option>
       <option value="https://irp.cdn-website.com/hull-wing.png">On</option>
     </select>
 
-    <label>Consoles:</label>
+    <label>Consoles</label>
     <select onchange="setConsole(this.value)">
       <option value="single">Single Console</option>
       <option value="dual">Dual Console (+$3,500)</option>
@@ -117,6 +156,8 @@ label {
       Total Price: $<span id="price">45,000</span>
     </div>
 
+    <button onclick="resetConfigurator()">Reset</button>
+
   </div>
 </div>
 
@@ -124,12 +165,16 @@ label {
 let basePrice = 45000;
 let consolePrice = 0;
 
-function setLayer(layerId, imageUrl) {
+function setLayer(layerId, selectEl) {
   const layer = document.getElementById(layerId);
-  if (!imageUrl) {
-    layer.src = "";
-  } else {
-    layer.src = imageUrl;
+  const option = selectEl.options[selectEl.selectedIndex];
+  const color = option.dataset.color || "transparent";
+
+  layer.src = selectEl.value;
+
+  const swatch = document.getElementById(layerId + "Swatch");
+  if (swatch) {
+    swatch.style.background = color;
   }
 }
 
@@ -141,6 +186,15 @@ function setConsole(type) {
 function updatePrice() {
   const total = basePrice + consolePrice;
   document.getElementById("price").innerText = total.toLocaleString();
+}
+
+function resetConfigurator() {
+  document.querySelectorAll(".layer").forEach(img => img.src = "");
+  document.querySelectorAll("select").forEach(sel => sel.selectedIndex = 0);
+  document.querySelectorAll(".swatch").forEach(s => s.style.background = "transparent");
+
+  consolePrice = 0;
+  updatePrice();
 }
 </script>
 

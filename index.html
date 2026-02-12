@@ -13,22 +13,22 @@ body {
 
 .boat-configurator {
   display: flex;
-  gap: 30px;
-  max-width: 1000px;
+  gap: 60px; /* MORE SPACE between image and menu */
+  max-width: 1200px;
   margin: auto;
 }
 
 /* IMAGE SIDE */
 .image-stack {
-  width: 55%;
+  width: 60%; /* make image area bigger */
   display: flex;
-  justify-content: center;  /* horizontal center */
-  align-items: center;      /* vertical center */
+  justify-content: center;
+  align-items: center;
 }
 
 .stack-inner {
   position: relative;
-  width: 100%;
+  width: 120%; /* scale image up */
 }
 
 .stack-inner img {
@@ -45,7 +45,7 @@ body {
 
 /* CONTROL SIDE */
 .controls {
-  width: 45%;
+  width: 40%;
   display: grid;
   gap: 12px;
 }
@@ -100,17 +100,18 @@ button {
 
   <!-- IMAGE STACK -->
   <div class="image-stack">
-  <div class="stack-inner">
-    <img id="baseBoat" src="https://irp.cdn-website.com/67b72195/dms3rep/multi/build-2.png">
+    <div class="stack-inner">
+      <img id="baseBoat" src="https://irp.cdn-website.com/67b72195/dms3rep/multi/build-2.png">
 
-    <img id="deck" class="layer">
-    <img id="hull" class="layer">
-    <img id="deckStripe" class="layer">
-    <img id="hullStripe" class="layer">
-    <img id="deckWing" class="layer">
-    <img id="hullWing" class="layer">
+      <img id="deck" class="layer">
+      <img id="hull" class="layer">
+      <img id="deckStripe" class="layer">
+      <img id="hullStripe" class="layer">
+      <img id="deckWing" class="layer">
+      <img id="hullWing" class="layer">
+    </div>
   </div>
-    
+
   <!-- CONTROLS -->
   <div class="controls">
 

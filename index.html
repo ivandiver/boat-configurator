@@ -109,56 +109,66 @@ button {
       <img id="hullStripe" class="layer">
       <img id="deckWing" class="layer">
       <img id="hullWing" class="layer">
+      <img id="consolecolor" class="layer">
     </div>
   </div>
 
   <!-- CONTROLS -->
   <div class="controls">
 
+    <label>Consoles</label>
+    <select onchange="setConsole(this.value)">
+      <option value="single">Single Console</option>
+      <option value="dual">Dual Console (+$3,500)</option>
+    </select>
+
     <label>Deck <span id="deckSwatch" class="swatch"></span></label>
     <select onchange="setLayer('deck', this)">
       <option value="">None</option>
-      <option value="https://irp.cdn-website.com/67b72195/dms3rep/multi/154066984257030-2.png" data-color="#c0392b">Red</option>
+      <option value="https://irp.cdn-website.com/67b72195/dms3rep/multi/154066984257030-2.png" data-color="#c0392b">Porsche Red</option>
       <option value="https://irp.cdn-website.com/deck-blue.png" data-color="#2980b9">Blue</option>
     </select>
 
     <label>Hull <span id="hullSwatch" class="swatch"></span></label>
     <select onchange="setLayer('hull', this)">
       <option value="">None</option>
-      <option value="https://irp.cdn-website.com/67b72195/dms3rep/multi/154067026575712-1.png" data-color="#c0392b">Red</option>
+      <option value="https://irp.cdn-website.com/67b72195/dms3rep/multi/154067026575712-1.png" data-color="#c0392b">Porsche Red</option>
       <option value="https://irp.cdn-website.com/hull-black.png" data-color="#2c3e50">Black</option>
     </select>
 
     <label>Deck Stripe <span id="deckStripeSwatch" class="swatch"></span></label>
     <select onchange="setLayer('deckStripe', this)">
       <option value="">None</option>
-      <option value="https://irp.cdn-website.com/deck-stripe-red.png" data-color="#c0392b">Red</option>
+      <option value="https://irp.cdn-website.com/67b72195/dms3rep/multi/154067102958915-1.png" data-color="#c0392b">Poresche Red</option>
       <option value="https://irp.cdn-website.com/deck-stripe-blue.png" data-color="#2980b9">Blue</option>
     </select>
 
     <label>Hull Stripe <span id="hullStripeSwatch" class="swatch"></span></label>
     <select onchange="setLayer('hullStripe', this)">
       <option value="">None</option>
-      <option value="https://irp.cdn-website.com/hull-stripe-red.png" data-color="#c0392b">Red</option>
+      <option value="https://irp.cdn-website.com/67b72195/dms3rep/multi/154067130915523-1.png" data-color="#c0392b">Porsche Red</option>
       <option value="https://irp.cdn-website.com/hull-stripe-blue.png" data-color="#2980b9">Blue</option>
     </select>
 
     <label>Deck Wing</label>
     <select onchange="setLayer('deckWing', this)">
-      <option value="">None</option>
-      <option value="https://irp.cdn-website.com/deck-wing.png">On</option>
+     <option value="">None</option>
+      <option value="https://irp.cdn-website.com/67b72195/dms3rep/multi/154067153795578-1.png" data-color="#c0392b">Porsche Red</option>
+      <option value="https://irp.cdn-website.com/hull-stripe-blue.png" data-color="#2980b9">Blue</option>
     </select>
 
     <label>Hull Wing</label>
     <select onchange="setLayer('hullWing', this)">
       <option value="">None</option>
-      <option value="https://irp.cdn-website.com/hull-wing.png">On</option>
+      <option value="https://irp.cdn-website.com/67b72195/dms3rep/multi/154067178264382-1.png" data-color="#c0392b">Porsche Red</option>
+      <option value="https://irp.cdn-website.com/hull-stripe-blue.png" data-color="#2980b9">Blue</option>
     </select>
 
-    <label>Consoles</label>
-    <select onchange="setConsole(this.value)">
-      <option value="single">Single Console</option>
-      <option value="dual">Dual Console (+$3,500)</option>
+    <label>Consolecolor</label>
+    <select onchange="setLayer('consolecolor', this)">
+      option value="">None</option>
+      <option value="https://irp.cdn-website.com/67b72195/dms3rep/multi/154067178264382-1.png" data-color="#c0392b">Porsche Red</option>
+      <option value="https://irp.cdn-website.com/hull-stripe-blue.png" data-color="#2980b9">Blue</option>>
     </select>
 
     <div class="price">

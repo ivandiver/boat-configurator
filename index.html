@@ -154,7 +154,6 @@ button {
 
     <label>Deck Stripe <span id="deckStripeSwatch" class="swatch"></span></label>
     <select onchange="setLayer('deckStripe', this)">
-      <option value="">None</option>
       <option value="" data-color="#01678b">Bahama Blue</option>
       <option value="" data-color="#faac1f">Bright Yellow</option>
       <option value="" data-color="#57c500">Electric Lime</option>
@@ -170,7 +169,6 @@ button {
 
     <label>Hull Stripe <span id="hullStripeSwatch" class="swatch"></span></label>
     <select onchange="setLayer('hullStripe', this)">
-      <option value="">None</option>
       <option value="" data-color="#01678b">Bahama Blue</option>
       <option value="" data-color="#faac1f">Bright Yellow</option>
       <option value="" data-color="#57c500">Electric Lime</option>
@@ -186,7 +184,6 @@ button {
 
     <label>Deck Wing <span id="hullStripeSwatch" class="swatch"></span></label>
     <select onchange="setLayer('deckWing', this)">
-     <option value="">None</option>
       <option value="" data-color="#01678b">Bahama Blue</option>
       <option value="" data-color="#faac1f">Bright Yellow</option>
       <option value="" data-color="#57c500">Electric Lime</option>
@@ -202,7 +199,6 @@ button {
 
     <label>Hull Wing <span id="hullStripeSwatch" class="swatch"></span></label>
     <select onchange="setLayer('hullWing', this)">
-      <option value="">None</option>
       <option value="" data-color="#01678b">Bahama Blue</option>
       <option value="" data-color="#faac1f">Bright Yellow</option>
       <option value="" data-color="#57c500">Electric Lime</option>
@@ -218,7 +214,6 @@ button {
 
     <label>Console Color <span id="hullStripeSwatch" class="swatch"></span></label>
     <select onchange="setLayer('consolecolor', this)">
-      <option value="">None</option>
       <option value="" data-color="#01678b">Bahama Blue</option>
       <option value="" data-color="#faac1f">Bright Yellow</option>
       <option value="" data-color="#57c500">Electric Lime</option>
@@ -243,7 +238,7 @@ button {
 </div>
 
 <script>
-let basePrice = 45000;
+let basePrice = 91500;
 let consolePrice = 0;
 
 function setLayer(layerId, selectEl) {
@@ -260,7 +255,7 @@ function setLayer(layerId, selectEl) {
 }
 
 function setConsole(type) {
-  consolePrice = (type === "dual") ? 3500 : 0;
+  consolePrice = (type === "dual") ? 1000 : 0;
   updatePrice();
 }
 
